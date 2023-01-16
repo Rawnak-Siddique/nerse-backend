@@ -12,10 +12,10 @@ import {profilesModel,
         DocumentaryModel} from '../Model/Models.js';
 
 const createsProfile = async (req, res) => {
-    const { userName, fullName, img, email, password, address, type, CreditCardID } = req.body;
+    const { userName, fullName, img, email, password, address, type } = req.body;
     
     const CreatedProfile = await profilesModel.create({
-        userName, fullName, img, email, password, address, type, CreditCardID
+        userName, fullName, img, email, password, address, type
     });
 
     if (CreatedProfile) {
@@ -248,10 +248,10 @@ const getRenter = async (req, res) => {
 };
 
 const CreateNurse = async (req, res) => {
-    const { NurseName, email, phone, address, city, description, status, Img } = req.body;
+    const { NurseName, email, phone, address, city, description, status, Img, certification } = req.body;
 
     const CreatedNurse = await NurseModel.create({
-        NurseName, email, phone, address, city, description, status, Img
+        NurseName, email, phone, address, city, description, status, Img, certification
     });
     if (CreatedNurse) {
         res.send(CreatedNurse);
@@ -270,10 +270,10 @@ const getNurse = async (req, res) => {
 };
 
 const CreateDoctor = async (req, res) => {
-    const { DoctorName, phone, email, description, Img } = req.body;
+    const { DoctorName, phone, email, description, Img, certification } = req.body;
 
     const CreatedDoctor = await DoctorModel.create({ 
-        DoctorName, phone, email, description, Img 
+        DoctorName, phone, email, description, Img, certification 
     });
     if (CreatedDoctor) {
         res.send(CreatedDoctor);
@@ -292,10 +292,10 @@ const getDoctor = async (req, res) => {
 };
 
 const createCareGiver = async (req, res) => {
-    const { name, email, phone, description, status, Img } = req.body;
+    const { name, email, phone, description, status, Img, certification } = req.body;
 
     const CreatedCareGiver = await CareGiverModel.create({ 
-        name, email, phone, description, status, Img
+        name, email, phone, description, status, Img, certification
     });
     if (CreatedCareGiver) {
         res.send(CreatedCareGiver);
@@ -314,10 +314,10 @@ const getCareGiver = async (req, res) => {
 };
 
 const CreateDaycare = async (req, res) => {
-    const { name, phone, email, city, duration } = req.body;
+    const { name, phone, email, city, duration, certification } = req.body;
 
     const CreatedDaycare = await DaycareModel.create({
-        name, phone, email, city, duration
+        name, phone, email, city, duration, certification
     });
     if (CreatedDaycare) {
         res.send(CreatedDaycare);

@@ -25,9 +25,6 @@ const profilesSchema = Mongoose.Schema({
     type: {
         type: String
     },
-    CreditCardID: {
-        type: String
-    },
 });
 
 const staffsSchema = Mongoose.Schema({
@@ -166,6 +163,7 @@ const NurseSchema = Mongoose.Schema({
     Img: {
         type: String
     },
+    certification: [String],
 });
 
 const DoctorSchema = Mongoose.Schema({
@@ -184,6 +182,7 @@ const DoctorSchema = Mongoose.Schema({
     Img: {
         type: String
     },
+    certification: [String],
 });
 
 const CareGiverSchema = Mongoose.Schema({
@@ -205,6 +204,7 @@ const CareGiverSchema = Mongoose.Schema({
     Img: {
         type: String
     },
+    certification: [String],
 });
 
 const DaycareSchema = Mongoose.Schema({
@@ -223,6 +223,7 @@ const DaycareSchema = Mongoose.Schema({
     duration: {
         type: String
     },
+    certification: [String],
 });
 
 const DocumentarySchema = Mongoose.Schema({

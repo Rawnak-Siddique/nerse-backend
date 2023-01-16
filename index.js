@@ -11,9 +11,9 @@ app.use(express.json());
 const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) =>{
-    res.send(`server is up and running on port: ${PORT}`);
+    res.send(`server is up and running on port:- ${PORT}`);
 });
 
 app.use('/api', router);
 
-app.listen(PORT, () => console.log(`Server running on port: ${PORT}`));
+app.listen(PORT, () => console.log(`Server running on port:- ${PORT}`));
