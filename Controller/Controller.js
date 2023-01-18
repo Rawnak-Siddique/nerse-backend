@@ -41,10 +41,10 @@ const getsProfile = async (req, res) => {
 };
 
 const createsStaffs = async (req, res) => {
-    const { name, occupation, description, CreditCardID, servicesId, certification } = req.body;
+    const { name, img, occupation, description, CreditCardID, servicesId, certification } = req.body;
 
     const CreatedStaff = await staffsModel.create({
-        name, occupation, description, CreditCardID, servicesId, certification
+        name, img, occupation, description, CreditCardID, servicesId, certification
     });
     
     if (CreatedStaff) {
