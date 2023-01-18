@@ -4,9 +4,12 @@
   "description": "Anita's backend for nerse applications",
   "main": "index.js",
   "type": "module",
+  "engines": {
+    "node": "19.x"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "author": "",
   "license": "ISC",
