@@ -81,7 +81,7 @@ routes.post("/Create-Doctor", CreateDoctor);
 
 routes.get("/get-Doctor", getDoctor);
 
-record.get("/get-Selected-Doctor/:id", getSelectedDoctor);
+routes.get("/get-Selected-Doctor/:id", getSelectedDoctor);
 
 routes.post("/create-Care-Giver", createCareGiver);
 
