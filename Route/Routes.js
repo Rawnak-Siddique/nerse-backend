@@ -20,7 +20,7 @@ import { createsProfile,
          getRenter,
          CreateNurse,
          getNurse,
-         getSelectedNurse
+         getSelectedNurse,
          CreateDoctor,
          getDoctor,
          getSelectedDoctor,
