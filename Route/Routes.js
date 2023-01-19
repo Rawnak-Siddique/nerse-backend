@@ -20,8 +20,10 @@ import { createsProfile,
          getRenter,
          CreateNurse,
          getNurse,
+         getSelectedNurse
          CreateDoctor,
          getDoctor,
+         getSelectedDoctor,
          createCareGiver,
          getCareGiver,
          CreateDaycare,
@@ -73,9 +75,13 @@ routes.post("/Create-Nurse", CreateNurse);
 
 routes.get("/get-Nurse", getNurse);
 
+routes.get("/get-Selected-Nurse/:id", getSelectedNurse);
+
 routes.post("/Create-Doctor", CreateDoctor);
 
 routes.get("/get-Doctor", getDoctor);
+
+record.get("/get-Selected-Doctor/:id", getSelectedDoctor);
 
 routes.post("/create-Care-Giver", createCareGiver);
 

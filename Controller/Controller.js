@@ -269,6 +269,20 @@ const getNurse = async (req, res) => {
     }
 };
 
+const getSelectedNurse = async (req, res) => {
+    const id = req.params.id;
+
+    const SelectedNurse = await NurseModel.find({
+        _id: id
+    });
+
+    if (SelectedNurse.length > 0) {
+        res.send(SelectedNurse);
+    } else {
+        res.status(500).send("Nurse not found");
+    }
+};
+
 const CreateDoctor = async (req, res) => {
     const { DoctorName, phone, email, description, Img, certification } = req.body;
 
@@ -288,6 +302,19 @@ const getDoctor = async (req, res) => {
         res.send(ListOfDoctor);
     } else {
         res.status(500).send("List not found");
+    }
+};
+
+const getSelectedDoctor = async (req, res) => {
+    const id = req.params.id;
+    
+    const SelectedDoctor = await DaycareModel.find({
+        _id: id
+    });
+    if(SelectedDoctor.length > 0) {
+        res.send(SelectedDoctor)
+    } else {
+        res.status(500).send("No Doctor found");
     }
 };
 
@@ -379,8 +406,10 @@ export { createsProfile,
          getRenter,
          CreateNurse,
          getNurse,
+         getSelectedNurse,
          CreateDoctor,
          getDoctor,
+         getSelectedDoctor,
          createCareGiver,
          getCareGiver,
          CreateDaycare,
