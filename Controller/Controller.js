@@ -284,10 +284,10 @@ const getSelectedNurse = async (req, res) => {
 };
 
 const CreateDoctor = async (req, res) => {
-    const { DoctorName, phone, email, description, Img, certification } = req.body;
+    const { DoctorName, email, phone, address, city, description, status, Img, certification} = req.body;
 
     const CreatedDoctor = await DoctorModel.create({ 
-        DoctorName, phone, email, description, Img, certification 
+        DoctorName, email, phone, address, city, description, status, Img, certification 
     });
     if (CreatedDoctor) {
         res.send(CreatedDoctor);
@@ -312,7 +312,7 @@ const getSelectedDoctor = async (req, res) => {
         _id: id
     });
     if(SelectedDoctor.length > 0) {
-        res.send(SelectedDoctor)
+        res.send(SelectedDoctor);
     } else {
         res.status(500).send("No Doctor found");
     }

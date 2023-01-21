@@ -170,13 +170,22 @@ const DoctorSchema = Mongoose.Schema({
     DoctorName: {
         type: String
     },
-    phone: {
-        type: String
-    },
     email: {
         type: String
     },
+    phone: {
+        type: String
+    },
+    address: {
+        type: String
+    },
+    city: {
+        type: String
+    },
     description: {
+        type: String
+    },
+    status: {
         type: String
     },
     Img: {
