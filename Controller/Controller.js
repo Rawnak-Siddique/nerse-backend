@@ -308,7 +308,7 @@ const getDoctor = async (req, res) => {
 const getSelectedDoctor = async (req, res) => {
     const id = req.params.id;
     
-    const SelectedDoctor = await DaycareModel.find({
+    const SelectedDoctor = await DoctorModel.find({
         _id: id
     });
     if(SelectedDoctor.length > 0) {
