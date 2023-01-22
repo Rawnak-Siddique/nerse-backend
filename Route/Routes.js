@@ -29,7 +29,11 @@ import { createsProfile,
          CreateDaycare,
          getDaycare,
          CreateDocumentary,
-         getDocumentary } from '../Controller/Controller.js';
+         getDocumentary,
+         createBooking,
+         getServicesBooking,
+         getProviderBooking,
+         getCustomerBooking } from '../Controller/Controller.js';
 
 const routes = Express.Router();
 
@@ -94,5 +98,13 @@ routes.get("/get-Daycare", getDaycare);
 routes.post("/Create-Documentary", CreateDocumentary);
 
 routes.get("/get-Documentary", getDocumentary);
+
+routes.post("/create-Booking", createBooking);
+
+routes.get("/get-Services-Booking/:id", getServicesBooking);
+
+routes.get("/get-Provider-Booking/:id", getProviderBooking);
+
+routes.get("/get-Customer-Booking/:id", getCustomerBooking);
 
 export default routes;

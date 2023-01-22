@@ -75,6 +75,12 @@ const CreditCardSchema = Mongoose.Schema({
     },
 });
 
+const FeaturesSchema = Mongoose.Schema({
+    features: {
+        type: String
+    },
+});
+
 const ServiceSchema = Mongoose.Schema({
     ServiceName: {
         type: String
@@ -94,6 +100,7 @@ const ServiceSchema = Mongoose.Schema({
     ServicesProviderId: {
         type: String
     },
+    FeaturLists: [FeaturesSchema],
 });
 
 const DonationSchema = Mongoose.Schema({
@@ -247,6 +254,24 @@ const DocumentarySchema = Mongoose.Schema({
     },
 });
 
+const BookingSchema = Mongoose.Schema({
+    customerId: {
+        type: String
+    },
+    servicesId: {
+        type: String
+    },
+    providerId: {
+        type: String
+    },
+    StartingDate: {
+        type: String
+    },
+    EndingDate: {
+        type: String
+    },
+});
+
 const profilesModel = Mongoose.model("Profiles", profilesSchema);
 const staffsModel = Mongoose.model("Staffs",staffsSchema);
 const TransactionModel = Mongoose.model("Transaction",TransactionSchema);
@@ -259,6 +284,7 @@ const DoctorModel = Mongoose.model("Doctors", DoctorSchema);
 const CareGiverModel = Mongoose.model("CareGiver", CareGiverSchema);
 const DaycareModel = Mongoose.model("Daycare", DaycareSchema);
 const DocumentaryModel = Mongoose.model("Documentaries", DocumentarySchema);
+const BookingModel = Mongoose.model("Booking", BookingSchema);
 
 export { profilesModel, 
          staffsModel, 
@@ -271,4 +297,5 @@ export { profilesModel,
          DoctorModel,
          CareGiverModel,
          DaycareModel,
-         DocumentaryModel };
+         DocumentaryModel,
+         BookingModel };

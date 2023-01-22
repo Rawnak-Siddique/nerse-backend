@@ -9,7 +9,8 @@ import {profilesModel,
         DoctorModel,
         CareGiverModel,
         DaycareModel,
-        DocumentaryModel} from '../Model/Models.js';
+        DocumentaryModel,
+        BookingModel} from '../Model/Models.js';
 
 const createsProfile = async (req, res) => {
     const { userName, fullName, img, email, password, address, type } = req.body;
@@ -157,10 +158,10 @@ const getServiceHistory = async (req, res) => {
 }
 
 const createService = async (req, res) => {
-    const { ServiceName,ServiceType, Description, Price, Img, ServicesProviderId } = req.body;
+    const { ServiceName,ServiceType, Description, Price, Img, ServicesProviderId, FeaturLists } = req.body;
 
     const CreateService = await ServiceModel.create({
-        ServiceName, ServiceType, Description, Price, Img, ServicesProviderId
+        ServiceName, ServiceType, Description, Price, Img, ServicesProviderId, FeaturLists
     });
     if (CreateService) {
         res.send(CreateService);
@@ -384,6 +385,59 @@ const getDocumentary = async (req, res) => {
     }
 };
 
+const createBooking = async (req, res) => {
+    const { customerId, servicesId, providerId, StartingDate, EndingDate } = req.body;
+
+    const CreatedBooking = await BookingModel.create({
+        customerId, servicesId, providerId, StartingDate, EndingDate
+    });
+    if (CreatedBooking) {
+        res.send(CreatedBooking);
+    } else {
+        res.status(500).send("Booking was not created");
+    }
+};
+
+const getServicesBooking = async (req, res) => {
+    const ServicesId = req.params.id;
+
+    const ServicesBooking = await BookingModel.find({ 
+        servicesId : ServicesId
+    });
+
+    if (ServicesBooking.length > 0) {
+        res.send(ServicesBooking);
+    } else {
+        res.status(500).send("Services Booking was not found");
+    }
+};
+
+const getProviderBooking = async (req, res) => {
+    const ProviderId = req.params.id;
+
+    const ProviderBooking = await BookingModel.find({ 
+        providerId : ProviderId
+    });
+
+    if (ProviderBooking.length > 0) {
+        res.send(ProviderBooking);
+    } else {
+        res.status(500).send("Provider Booking was not found");
+    }
+};
+const getCustomerBooking = async (req, res) => {
+    const CustomerId = req.params.id;
+
+    const CustomerBooking = await BookingModel.find({ 
+        customerId : CustomerId
+    });
+
+    if (CustomerBooking.length > 0) {
+        res.send(CustomerBooking);
+    } else {
+        res.status(500).send("Customer Booking was not found");
+    }
+};
 
 export { createsProfile, 
          getsProfile,
@@ -415,4 +469,8 @@ export { createsProfile,
          CreateDaycare,
          getDaycare,
          CreateDocumentary,
-         getDocumentary };
+         getDocumentary,
+         createBooking,
+         getServicesBooking,
+         getProviderBooking,
+         getCustomerBooking };
