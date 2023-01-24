@@ -129,6 +129,7 @@ const RenterSchema = Mongoose.Schema({
         type: String
     },
     Img: [String],
+    FeaturesLists: [String],
     StartingDate: {
         type: String
     },

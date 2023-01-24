@@ -227,10 +227,10 @@ const getDonation = async (req, res) => {
 };
 
 const createRenter = async (req, res) => {
-    const { name, address, city, RelativePhoneNumber, PhoneNumber, Img, StartingDate, EndingDate, PackageType } = req.body;
+    const { name, address, city, RelativePhoneNumber, PhoneNumber, Img, FeaturesLists, StartingDate, EndingDate, PackageType } = req.body;
 
     const CreatedRenter = await RenterModel.create({ 
-        name, address, city, RelativePhoneNumber, PhoneNumber, Img, StartingDate, EndingDate, PackageType 
+        name, address, city, RelativePhoneNumber, PhoneNumber, Img, FeaturesLists, StartingDate, EndingDate, PackageType 
     });
     if (CreatedRenter) {
         res.send(CreatedRenter);
