@@ -158,10 +158,10 @@ const getServiceHistory = async (req, res) => {
 }
 
 const createService = async (req, res) => {
-    const { ServiceName,ServiceType, Description, Price, Img, ServicesProviderId, FeaturLists } = req.body;
+    const { ServiceName,ServiceType, Description, Price, Img, ServicesProviderId, FeaturesLists } = req.body;
 
     const CreateService = await ServiceModel.create({
-        ServiceName, ServiceType, Description, Price, Img, ServicesProviderId, FeaturLists
+        ServiceName, ServiceType, Description, Price, Img, ServicesProviderId, FeaturesLists
     });
     if (CreateService) {
         res.send(CreateService);

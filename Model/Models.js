@@ -75,6 +75,12 @@ const CreditCardSchema = Mongoose.Schema({
     },
 });
 
+const FeaturesSchema = Mongoose.Schema({
+    features: {
+        type: String
+    },
+});
+
 const ServiceSchema = Mongoose.Schema({
     ServiceName: {
         type: String
@@ -94,7 +100,7 @@ const ServiceSchema = Mongoose.Schema({
     ServicesProviderId: {
         type: String
     },
-    FeaturLists: [String],
+    FeaturesLists: [FeaturesSchema],
 });
 
 const DonationSchema = Mongoose.Schema({
