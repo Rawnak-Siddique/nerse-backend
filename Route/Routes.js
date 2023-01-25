@@ -35,6 +35,8 @@ import { createsProfile,
          getProviderBooking,
          getCustomerBooking } from '../Controller/Controller.js';
 
+import  getCheckoutSession  from  '../Controller/StripeApi.cjs';       
+
 const routes = Express.Router();
 
 routes.post('/create-profile', createsProfile);
@@ -106,5 +108,7 @@ routes.get("/get-Services-Booking/:id", getServicesBooking);
 routes.get("/get-Provider-Booking/:id", getProviderBooking);
 
 routes.get("/get-Customer-Booking/:id", getCustomerBooking);
+
+routes.get("/checkout-session/:renterID", getCheckoutSession);
 
 export default routes;

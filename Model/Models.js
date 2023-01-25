@@ -128,6 +128,9 @@ const RenterSchema = Mongoose.Schema({
     PhoneNumber: {
         type: String
     },
+    Price: {
+        type: String
+    },
     Img: [String],
     FeaturesLists: [String],
     StartingDate: {
