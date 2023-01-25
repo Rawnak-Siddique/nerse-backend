@@ -12,6 +12,7 @@ import { createsProfile,
          getServiceHistory,
          createService,
          getService,
+         getSelectedService,
          getServicesByProvider,
          getServicesByType,
          createDonation,
@@ -64,6 +65,8 @@ routes.get('/get-Service-History/:id', getServiceHistory);
 routes.post("/create-Service", createService);
 
 routes.get("/get-Service", getService);
+
+routes.get("/get-select-service/:id", getSelectedService);
 
 routes.get('/get-Services-By-Provider/:id', getServicesByProvider);
 

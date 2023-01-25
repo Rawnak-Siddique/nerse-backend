@@ -179,6 +179,20 @@ const getService = async (req, res) => {
     }
 };
 
+const getSelectedService = async (req, res) => {
+    const id = req.params.id;
+
+    const selectedService = await ServiceModel.find({
+        _id: id
+    });
+    
+    if (selectedService.length > 0) {
+        res.send(selectedService);
+    } else {
+        res.status(404).send("No Selected Service found");
+    }
+};
+
 const getServicesByProvider = async (req, res) => {
     const id = req.params.id;
     const ListOfServices = await ServiceModel.find({
@@ -452,6 +466,7 @@ export { createsProfile,
          getServiceHistory,
          createService,
          getService,
+         getSelectedService,
          getServicesByProvider,
          getServicesByType,
          createDonation,
