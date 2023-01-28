@@ -1,8 +1,10 @@
-const RenterModel=require('../Model/Models.js');
+import {RenterModel} from '../Model/Models.js';
 
-const stripe = require('stripe')(process.env.Stripe_Api_Key);
+import Stripe from 'stripe';
 
-export const getCheckoutSession = async (req, res) => {
+//const stripe = require('stripe')(process.env.Stripe_Api_Key);
+
+const getCheckoutSession = async (req, res) => {
 
     const renterID = res.params.renterID;
     const Renter = await RenterModel.findById(renterID);
@@ -29,4 +31,4 @@ export const getCheckoutSession = async (req, res) => {
     });
 };
 
-export getCheckoutSession;
+export {getCheckoutSession};

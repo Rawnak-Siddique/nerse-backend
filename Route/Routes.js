@@ -36,7 +36,7 @@ import { createsProfile,
          getProviderBooking,
          getCustomerBooking } from '../Controller/Controller.js';
 
-import  getCheckoutSession  from  '../Controller/StripeApi.cjs';       
+import  {getCheckoutSession}  from  '../Controller/StripeApi.mjs';       
 
 const routes = Express.Router();
 
