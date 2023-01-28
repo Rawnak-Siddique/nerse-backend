@@ -262,6 +262,20 @@ const getRenter = async (req, res) => {
     }
 };
 
+const getRenterById = async (req, res) => {
+    const Id = req.params.id;
+
+    const ListOfRenter = await RenterModel.find({
+        _id: Id
+    });
+
+    if(ListOfRenter.length > 0) {
+        res.send(ListOfRenter);
+    } else {
+        res.status(500).send("List not found");
+    }
+};
+
 const CreateNurse = async (req, res) => {
     const { NurseName, email, phone, address, city, description, status, Img, certification } = req.body;
 
@@ -473,6 +487,7 @@ export { createsProfile,
          getDonation,
          createRenter,
          getRenter,
+         getRenterById,
          CreateNurse,
          getNurse,
          getSelectedNurse,

@@ -19,6 +19,7 @@ import { createsProfile,
          getDonation,
          createRenter,
          getRenter,
+         getRenterById,
          CreateNurse,
          getNurse,
          getSelectedNurse,
@@ -79,6 +80,8 @@ routes.get("/get-Donation", getDonation);
 routes.post("/create-Renter", createRenter);
 
 routes.get("/get-Renter", getRenter);
+
+routes.get("/get-Renter/:id", getRenterById);
 
 routes.post("/Create-Nurse", CreateNurse);
 
