@@ -43,7 +43,7 @@ const routes = Express.Router();
 
 routes.post('/create-profile', createsProfile);
 
-routes.get('/get-profile', getsProfile);
+routes.post('/get-profile', getsProfile);
 
 routes.post('/create-staffs', createsStaffs);
 
