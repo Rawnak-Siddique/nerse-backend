@@ -117,4 +117,20 @@ routes.get("/get-Customer-Booking/:id", getCustomerBooking);
 
 routes.get("/checkout-session/:renterID", getCheckoutSession);
 
+routes.post("/create-payment-intent", async (req, res) => {
+    const payment = req.body;
+    const price = payment.price;
+    const amount = price * 100;
+
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: amount,
+      currency: "usd",
+      payment_method_types: ["card"],
+    });
+
+    res.send({
+      clientSecret: paymentIntent.client_secret,
+    });
+  });
+
 export default routes;
