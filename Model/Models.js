@@ -266,6 +266,12 @@ const BookingSchema = Mongoose.Schema({
     providerId: {
         type: String
     },
+    ServiceData: {
+        type: String
+    },
+    ServiceType: {
+        type: String
+    },
     transactionId: {
         type: String
     },
