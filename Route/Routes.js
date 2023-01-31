@@ -1,68 +1,70 @@
-import Express from 'express';
-import stripe from 'stripe';
-import { createsProfile, 
-         getsProfile,
-         createsStaffs,
-         findStaffs,
-         getsStaffs,
-         createCreditID,
-         getCreditID,
-         createPaymentRecord,
-         getCustomerHistory,
-         getsStaffsHistory,
-         getServiceHistory,
-         createService,
-         getService,
-         getSelectedService,
-         getServicesByProvider,
-         getServicesByType,
-         createDonation,
-         getDonation,
-         createRenter,
-         getRenter,
-         getRenterById,
-         CreateNurse,
-         getNurse,
-         getSelectedNurse,
-         CreateDoctor,
-         getDoctor,
-         getSelectedDoctor,
-         createCareGiver,
-         getCareGiver,
-         CreateDaycare,
-         getDaycare,
-         CreateDocumentary,
-         getDocumentary,
-         createBooking,
-         getServicesBooking,
-         getProviderBooking,
-         getCustomerBooking } from '../Controller/Controller.js';
+import Express from "express";
+import Stripe from "stripe";
+import {
+  createsProfile,
+  getsProfile,
+  createsStaffs,
+  findStaffs,
+  getsStaffs,
+  createCreditID,
+  getCreditID,
+  createPaymentRecord,
+  getCustomerHistory,
+  getsStaffsHistory,
+  getServiceHistory,
+  createService,
+  getService,
+  getSelectedService,
+  getServicesByProvider,
+  getServicesByType,
+  createDonation,
+  getDonation,
+  createRenter,
+  getRenter,
+  getRenterById,
+  CreateNurse,
+  getNurse,
+  getSelectedNurse,
+  CreateDoctor,
+  getDoctor,
+  getSelectedDoctor,
+  createCareGiver,
+  getCareGiver,
+  CreateDaycare,
+  getDaycare,
+  CreateDocumentary,
+  getDocumentary,
+  createBooking,
+  getServicesBooking,
+  getProviderBooking,
+  getCustomerBooking,
+} from "../Controller/Controller.js";
 
-import  {getCheckoutSession}  from  '../Controller/StripeApi.mjs';       
+import { getCheckoutSession } from "../Controller/StripeApi.mjs";
 
 const routes = Express.Router();
 
-routes.post('/create-profile', createsProfile);
+routes.post("/create-profile", createsProfile);
 
-routes.post('/get-profile', getsProfile);
+routes.post("/get-profile", getsProfile);
 
-routes.post('/create-staffs', createsStaffs);
+routes.post("/create-staffs", createsStaffs);
 
-routes.get('/find-staffs', findStaffs);
+routes.get("/find-staffs", findStaffs);
 
-routes.get('/get-staffs/:id', getsStaffs);
+routes.get("/get-staffs/:id", getsStaffs);
 
-routes.post('/create-credit-card', createCreditID);
+routes.post("/create-credit-card", createCreditID);
 
-routes.get('/get-Card-number/:id', getCreditID);
+routes.get("/get-Card-number/:id", getCreditID);
 
 routes.post("/create-payment-record", createPaymentRecord);
 
-routes.get('/get-Customer-History/:id', getCustomerHistory);
+routes.get("/get-Customer-History/:id", getCustomerHistory);
 
-routes.get('/gets-Staffs-History/:id', getsStaffsHistory);
+routes.get("/gets-Staffs-History/:id", getsStaffsHistory);
 
-routes.get('/get-Service-History/:id', getServiceHistory);
+routes.get("/get-Service-History/:id", getServiceHistory);
 
 routes.post("/create-Service", createService);
 
@@ -70,9 +72,9 @@ routes.get("/get-Service", getService);
 
 routes.get("/get-select-service/:id", getSelectedService);
 
-routes.get('/get-Services-By-Provider/:id', getServicesByProvider);
+routes.get("/get-Services-By-Provider/:id", getServicesByProvider);
 
-routes.get('/get-Services-By-Type/:type', getServicesByType);
+routes.get("/get-Services-By-Type/:type", getServicesByType);
 
 routes.post("/create-Donation", createDonation);
 
@@ -118,20 +120,22 @@ routes.get("/get-Customer-Booking/:id", getCustomerBooking);
 
 routes.get("/checkout-session/:renterID", getCheckoutSession);
 
+const stripe = new Stripe(`${process.env.STRIPE_SECRET}`);
+
 routes.post("/create-payment-intent", async (req, res) => {
-    const payment = req.body;
-    const price = payment.price;
-    const amount = price * 100;
+  const payment = req.body;
+  const price = payment.price;
+  const amount = price * 100;
 
-    const paymentIntent = await stripe.paymentIntents.create({
-      amount: amount,
-      currency: "usd",
-      payment_method_types: ["card"],
-    });
-
-    res.send({
-      clientSecret: paymentIntent.client_secret,
-    });
+  const paymentIntent = await stripe.paymentIntents.create({
+    amount: amount,
+    currency: "usd",
+    payment_method_types: ["card"],
   });
+
+  res.send({
+    clientSecret: paymentIntent.client_secret,
+  });
+});
 
 export default routes;
