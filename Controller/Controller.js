@@ -414,10 +414,10 @@ const getDocumentary = async (req, res) => {
 };
 
 const createBooking = async (req, res) => {
-    const { customerId, servicesId, providerId, StartingDate, EndingDate } = req.body;
+    const { customerId, servicesId, providerId, transactionId, StartingDate, EndingDate } = req.body;
 
     const CreatedBooking = await BookingModel.create({
-        customerId, servicesId, providerId, StartingDate, EndingDate
+        customerId, servicesId, providerId, transactionId, StartingDate, EndingDate
     });
     if (CreatedBooking) {
         res.send(CreatedBooking);

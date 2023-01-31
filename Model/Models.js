@@ -266,6 +266,9 @@ const BookingSchema = Mongoose.Schema({
     providerId: {
         type: String
     },
+    transactionId: {
+        type: String
+    },
     StartingDate: {
         type: String
     },
