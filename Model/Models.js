@@ -166,6 +166,9 @@ const NurseSchema = Mongoose.Schema({
     status: {
         type: String
     },
+    Price: {
+        type: String
+    },
     Img: {
         type: String
     },

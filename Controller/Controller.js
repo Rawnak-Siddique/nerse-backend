@@ -277,10 +277,10 @@ const getRenterById = async (req, res) => {
 };
 
 const CreateNurse = async (req, res) => {
-    const { NurseName, email, phone, address, city, description, status, Img, certification } = req.body;
+    const { NurseName, email, phone, address, city, description, status, Price, Img, certification } = req.body;
 
     const CreatedNurse = await NurseModel.create({
-        NurseName, email, phone, address, city, description, status, Img, certification
+        NurseName, email, phone, address, city, description, status, Price, Img, certification
     });
     if (CreatedNurse) {
         res.send(CreatedNurse);
