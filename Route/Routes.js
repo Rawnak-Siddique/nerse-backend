@@ -120,7 +120,9 @@ routes.get("/get-Customer-Booking/:id", getCustomerBooking);
 
 routes.get("/checkout-session/:renterID", getCheckoutSession);
 
-const stripe = new Stripe(`${process.env.STRIPE_SECRET}`);
+const stripe = new Stripe(
+  `sk_test_51MWJnHLLp5TfvpYyrGRsXnRgtBQzskW3NlBnGlLcqXoZeiwdWn1QOPPXwnfkTtRbrSbizv8M64E6y9nLYXDwPM3K00jjIWUyCw`
+);
 
 routes.post("/create-payment-intent", async (req, res) => {
   const payment = req.body;
@@ -130,7 +132,7 @@ routes.post("/create-payment-intent", async (req, res) => {
   const paymentIntent = await stripe.paymentIntents.create({
     amount: amount,
     currency: "usd",
-    payment_method_types: ["card"],
+    payment_method_types: ["card"] /*  */,
   });
 
   res.send({
