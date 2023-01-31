@@ -1,4 +1,5 @@
 import Express from 'express';
+import stripe from 'stripe';
 import { createsProfile, 
          getsProfile,
          createsStaffs,
