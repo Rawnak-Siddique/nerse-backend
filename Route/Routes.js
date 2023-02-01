@@ -30,8 +30,10 @@ import {
   getSelectedDoctor,
   createCareGiver,
   getCareGiver,
+  getSelectedCareGiver,
   CreateDaycare,
   getDaycare,
+  getSelectedDaycare,
   CreateDocumentary,
   getDocumentary,
   createBooking,
@@ -104,9 +106,13 @@ routes.post("/create-Care-Giver", createCareGiver);
 
 routes.get("/get-Care-Giver", getCareGiver);
 
+routes.get("/get-Selected-CareGiver/:id", getSelectedCareGiver);
+
 routes.post("/Create-Daycare", CreateDaycare);
 
 routes.get("/get-Daycare", getDaycare);
+
+routes.get("/get-Selected-Daycare/:id", getSelectedDaycare);
 
 routes.post("/Create-Documentary", CreateDocumentary);
 

@@ -373,6 +373,18 @@ const getCareGiver = async (req, res) => {
     }
 };
 
+const getSelectedCareGiver = async (req, res) => {
+    const Id = req.params.id;
+    const SelectedCareGiver = await CareGiverModel.find({
+        _id: Id
+    });
+    if(SelectedCareGiver.length > 0) {
+        res.send(SelectedCareGiver);
+    }
+    else {
+        res.status(500).send("Selected CareGiver not found");
+    }
+};
 const CreateDaycare = async (req, res) => {
     const { name, phone, email, city, Price, duration, certification } = req.body;
 
@@ -392,6 +404,18 @@ const getDaycare = async (req, res) => {
         res.send(ListOfDaycare);
     } else {
         res.status(500).send("List not found");
+    }
+};
+
+const getSelectedDaycare = async (req, res) =>{
+    const Id = req.params.id;
+    const SelectedDaycare = await DaycareModel.find({
+        _id: Id
+    });
+    if (SelectedDaycare.length > 0) {
+        res.send(SelectedDaycare);
+    } else {
+        res.status(500).send("Selected Daycare not found");
     }
 };
 
@@ -524,9 +548,11 @@ export { createsProfile,
          getDoctor,
          getSelectedDoctor,
          createCareGiver,
+         getSelectedCareGiver,
          getCareGiver,
          CreateDaycare,
          getDaycare,
+         getSelectedDaycare,
          CreateDocumentary,
          getDocumentary,
          createBooking,
