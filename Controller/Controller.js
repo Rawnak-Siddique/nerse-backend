@@ -513,7 +513,7 @@ const createEnquiry = async (req, res) => {
 const getEnquiry = async (req, res) => {
     const ListOfEnquiry = await EnquiryModel.find();
 
-    if (ListOfEnquiry > 0) {
+    if (ListOfEnquiry.length > 0) {
         res.send(ListOfEnquiry);
     } else {
         res.status(500).send("Enquiry was not found");
