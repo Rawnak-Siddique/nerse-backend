@@ -234,7 +234,7 @@ const createDonation = async (req, res) => {
 const getDonation = async (req, res) => {
     const Id = req.params.id;
     const ListOfDonation = await DonationModel.find({
-        _id: Id,
+        userId: Id,
     });
 
     if(ListOfDonation.length > 0) {
