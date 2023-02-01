@@ -98,16 +98,19 @@ const ServiceSchema = Mongoose.Schema({
 });
 
 const DonationSchema = Mongoose.Schema({
-    Email: {
+    userId: {
         type: String
     },
-    Phone: {
+    userName: {
         type: String
     },
-    CardNumber: {
+    donation_amount: {
         type: String
     },
-    DonationAmount: {
+    email: {
+        type: String
+    },
+    message: {
         type: String
     },
 });
@@ -219,6 +222,9 @@ const CareGiverSchema = Mongoose.Schema({
     status: {
         type: String
     },
+    Price: {
+        type: String
+    },
     Img: {
         type: String
     },
@@ -236,6 +242,9 @@ const DaycareSchema = Mongoose.Schema({
         type: String
     },
     city: {
+        type: String
+    },
+    Price: {
         type: String
     },
     duration: {
@@ -283,6 +292,24 @@ const BookingSchema = Mongoose.Schema({
     },
 });
 
+const EnquirySchema = Mongoose.Schema({
+    Name: {
+        type: String
+    },
+    Phone: {
+        type: String
+    },
+    Email: {
+        type: String
+    },
+    Subject: {
+        type: String
+    },
+    Message: {
+        type: String
+    },
+});
+
 const profilesModel = Mongoose.model("Profiles", profilesSchema);
 const staffsModel = Mongoose.model("Staffs",staffsSchema);
 const TransactionModel = Mongoose.model("Transaction",TransactionSchema);
@@ -296,6 +323,7 @@ const CareGiverModel = Mongoose.model("CareGiver", CareGiverSchema);
 const DaycareModel = Mongoose.model("Daycare", DaycareSchema);
 const DocumentaryModel = Mongoose.model("Documentaries", DocumentarySchema);
 const BookingModel = Mongoose.model("Booking", BookingSchema);
+const EnquiryModel = Mongoose.model("Enquiry", EnquirySchema);
 
 export { profilesModel, 
          staffsModel, 
@@ -309,4 +337,5 @@ export { profilesModel,
          CareGiverModel,
          DaycareModel,
          DocumentaryModel,
-         BookingModel };
+         BookingModel,
+         EnquiryModel };

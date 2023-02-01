@@ -10,7 +10,8 @@ import {profilesModel,
         CareGiverModel,
         DaycareModel,
         DocumentaryModel,
-        BookingModel} from '../Model/Models.js';
+        BookingModel,
+        EnquiryModel } from '../Model/Models.js';
 
 const createsProfile = async (req, res) => {
     const { userName, fullName, img, email, password, address, type } = req.body;
@@ -218,10 +219,10 @@ const getServicesByType = async (req, res) => {
 };
 
 const createDonation = async (req, res) => {
-    const { Email, Phone, CardNumber, DonationAmount } = req.body;
+    const { userId, userName, donation_amount, email, message } = req.body;
 
     const CreateDonation = await DonationModel.create({
-        Email, Phone, CardNumber, DonationAmount
+        userId, userName, donation_amount, email, message
     });
     if (CreateDonation) {
         res.send(CreateDonation);
@@ -231,7 +232,10 @@ const createDonation = async (req, res) => {
 };
 
 const getDonation = async (req, res) => {
-    const ListOfDonation = await DonationModel.find();
+    const Id = req.params.id;
+    const ListOfDonation = await DonationModel.find({
+        _id: Id,
+    });
 
     if(ListOfDonation.length > 0) {
         res.send(ListOfDonation);
@@ -241,10 +245,10 @@ const getDonation = async (req, res) => {
 };
 
 const createRenter = async (req, res) => {
-    const { name, address, city, RelativePhoneNumber, PhoneNumber, Img, FeaturesLists, StartingDate, EndingDate, PackageType } = req.body;
+    const { name, address, city, RelativePhoneNumber, PhoneNumber, Price, Img, FeaturesLists, StartingDate, EndingDate, PackageType } = req.body;
 
     const CreatedRenter = await RenterModel.create({ 
-        name, address, city, RelativePhoneNumber, PhoneNumber, Img, FeaturesLists, StartingDate, EndingDate, PackageType 
+        name, address, city, RelativePhoneNumber, PhoneNumber, Price, Img, FeaturesLists, StartingDate, EndingDate, PackageType 
     });
     if (CreatedRenter) {
         res.send(CreatedRenter);
@@ -348,10 +352,10 @@ const getSelectedDoctor = async (req, res) => {
 };
 
 const createCareGiver = async (req, res) => {
-    const { name, email, phone, description, status, Img, certification } = req.body;
+    const { name, email, phone, description, status, Price, Img, certification } = req.body;
 
     const CreatedCareGiver = await CareGiverModel.create({ 
-        name, email, phone, description, status, Img, certification
+        name, email, phone, description, status, Price, Img, certification
     });
     if (CreatedCareGiver) {
         res.send(CreatedCareGiver);
@@ -370,10 +374,10 @@ const getCareGiver = async (req, res) => {
 };
 
 const CreateDaycare = async (req, res) => {
-    const { name, phone, email, city, duration, certification } = req.body;
+    const { name, phone, email, city, Price, duration, certification } = req.body;
 
     const CreatedDaycare = await DaycareModel.create({
-        name, phone, email, city, duration, certification
+        name, phone, email, city, Price, duration, certification
     });
     if (CreatedDaycare) {
         res.send(CreatedDaycare);
@@ -453,6 +457,7 @@ const getProviderBooking = async (req, res) => {
         res.status(500).send("Provider Booking was not found");
     }
 };
+
 const getCustomerBooking = async (req, res) => {
     const CustomerId = req.params.id;
 
@@ -464,6 +469,30 @@ const getCustomerBooking = async (req, res) => {
         res.send(CustomerBooking);
     } else {
         res.status(500).send("Customer Booking was not found");
+    }
+};
+
+const createEnquiry = async (req, res) => {
+    const { Name, Phone, Email, Subject, Message } = req.body;
+
+    const CreatedEnquiry = await EnquiryModel.create({
+        Name, Phone, Email, Subject, Message
+    });
+
+    if (CreatedEnquiry) {
+        res.send(CreatedEnquiry);
+    } else {
+        res.status(500).send("Enquiry was not created");
+    }
+};
+
+const getEnquiry = async (req, res) => {
+    const ListOfEnquiry = await EnquiryModel.find();
+
+    if (ListOfEnquiry > 0) {
+        res.send(ListOfEnquiry);
+    } else {
+        res.status(500).send("Enquiry was not found");
     }
 };
 
@@ -503,4 +532,6 @@ export { createsProfile,
          createBooking,
          getServicesBooking,
          getProviderBooking,
-         getCustomerBooking };
+         getCustomerBooking,
+         createEnquiry,
+         getEnquiry };

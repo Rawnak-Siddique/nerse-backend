@@ -38,6 +38,8 @@ import {
   getServicesBooking,
   getProviderBooking,
   getCustomerBooking,
+  createEnquiry,
+  getEnquiry 
 } from "../Controller/Controller.js";
 
 import { getCheckoutSession } from "../Controller/StripeApi.mjs";
@@ -78,7 +80,7 @@ routes.get("/get-Services-By-Type/:type", getServicesByType);
 
 routes.post("/create-Donation", createDonation);
 
-routes.get("/get-Donation", getDonation);
+routes.get("/get-Donation/:id", getDonation);
 
 routes.post("/create-Renter", createRenter);
 
@@ -119,6 +121,10 @@ routes.get("/get-Provider-Booking/:id", getProviderBooking);
 routes.get("/get-Customer-Booking/:id", getCustomerBooking);
 
 routes.get("/checkout-session/:renterID", getCheckoutSession);
+
+routes.post("/create-Enquiry", createEnquiry);
+
+routes.get("/get-Enquiry", getEnquiry);
 
 const stripe = new Stripe(
   `sk_test_51MWJnHLLp5TfvpYyrGRsXnRgtBQzskW3NlBnGlLcqXoZeiwdWn1QOPPXwnfkTtRbrSbizv8M64E6y9nLYXDwPM3K00jjIWUyCw`
